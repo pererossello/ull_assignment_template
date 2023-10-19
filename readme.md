@@ -14,12 +14,13 @@ This version has been modified by Pere Rosselló for the University of La Laguna
 [Original GitHub Repo](https://github.com/granttremblay/Nature_Letter_LaTeX_template/blob/master/natureprintstyle.cls)
 
 ## Usage
-1. Download the template files.
-2. Add your content in the appropriate sections.
-3. Compile your LaTeX document.
+1. Download the `latex_folder` folder
+2. Open it with your local TeX editor or on Overleaf
+3. Add your content in the appropriate sections.
+4. Compile your LaTeX document.
 
 ## Customization
-Feel free to customize the .cls file at your will. 
+Feel free to customize the `.cls` file at your will. 
 
 ## Comment
 
