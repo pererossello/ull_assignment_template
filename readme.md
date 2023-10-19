@@ -3,6 +3,8 @@
 ## Overview
 This LaTeX template is designed for students of the University of La Laguna. It provides a customized Nature-Style class to give your academic documents a professional look and feel.
 
+![Example Layout](image_for_readme.png)
+
 ## Attribution
 The Nature-Style class is based on `natureprintstyle.cls`, which has been contributed to by various authors:
 - **v1.0** - Brendon Higgins (19 April 2008)
