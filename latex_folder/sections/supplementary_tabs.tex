@@ -5,111 +5,39 @@
     \centering
     \begin{tabular}{|c|l|c|c|}
         \hline
-        \multicolumn{4}{|c|}{\textbf{Global Parameters}} \\
+        \multicolumn{4}{|c|}{\textbf{Global Parameters}}                                                            \\
         \hline
-        \multicolumn{4}{|c|}{\(X_{0} = 111.66 \pm 0.0\), \(Y_{0} = 147.07 \pm 0.0\)} \\
+        \multicolumn{4}{|c|}{\(X_{0} = 111.66 \pm 0.0\), \(Y_{0} = 147.07 \pm 0.0\)}                                \\
         \hline
         \multicolumn{4}{|c|}{\(\chi^{2}_{\text{red}} = 2.5\), \(\text{AIC} = 37641.39\), \(\text{BIC} = 37778.48\)} \\
         \hline
-        \textbf{Functions} & \textbf{Parameters} & \textbf{Results} & \textbf{Error} \\
-        \hline
-        \multirow{5}{*}{Sérsic} 
-        & PA (º) & \(21.94\) & \(0.28\) \\
-        & Ell & \(0.21\) & \(0.0\) \\
-        & \(n\) & \(1.63\) & \(0.0\) \\
-        & \(I_{e}\) (counts/\(px^{2}\)) & \(700\) & \(0.0\) \\
-        & \(R_{e}\) (px) & \(6.12\) & \(0.01\) \\
-        \hline
-        \multirow{4}{*}{Exponential}
-        & PA (º) & \(29.36\) & \(0.06\) \\
-        & Ell & \(0.66\) & \(0.0\) \\
-        & \(I_{0}\) (counts/\(px^{2}\)) & \(289.28\) & \(1.41\) \\
-        & \(h\) (px) & \(30.98\) & \(0.1\) \\
-        \hline
-        \multirow{5}{*}{Sérsic (Lump)}
-        & \(X_{1}\) & \(117.13\) & \(0.02\) \\
-        & \(Y_{1}\) & \(145.22\) & \(0.02\) \\
-        & PA (º) & \(68.32\) & \(1.39\) \\
-        & Ell & \(0.25\) & \(0.01\) \\
-        & \(n\) & \(1.53\) & \(0.04\) \\
-        & \(I_{e}\) (counts/\(px^{2}\)) & \(166.4\) & \(5.27\) \\
-        & \(R_{e}\) (px) & \(4.2\) & \(0.09\) \\
-        \hline
-    \end{tabular}
-     \caption{Parameters for the Exponential + Sérsic \& Sérsic (Lump) Model}
-    \label{tab:my_label}
-\end{table}
-
-\begin{table}[!htb]
-    \renewcommand{\thetable}{S2}
-    \centering
-    \begin{tabular}{|c|l|c|c|}
-        \hline
-        \multicolumn{4}{|c|}{\textbf{Exponential + Sérsic \& Sérsic (Lump)}} \\
-        \hline
-        \textbf{Component} & \textbf{m} & \textbf{M} & \textbf{B/T} \\
-        \hline
-        Bulb & \(9.8785\) & \(-25.43\) & \(0.32976\) \\
-        \hline
-        Disk & \(9.1650\) & \(-26.14\) & \(0.63618\) \\
-        \hline
-        Lump & \(12.3436\) & \(-22.97\) & \(0.03405\) \\
-        \hline
-    \end{tabular}
-    \caption{Magnitudes and Bulge Disk Ratios for the Exponential + Sérsic \& Sérsic (Lump) Model. }
-\end{table}
-
-
-\newpage
-
-
-\begin{table}[!htb]
-    \renewcommand{\thetable}{S3}
-    \centering
-    \begin{tabular}{|c|l|c|c|}
-        \hline
-        \multicolumn{4}{|c|}{\textbf{Exponential + Sérsic with Customized Mask}} \\
-        \hline
-        \multicolumn{4}{|c|}{\(X_{0} = 111.9 \pm 0.0\), \(Y_{0} = 147.02 \pm 0.0\)} \\
-        \hline
-        \multicolumn{4}{|c|}{\(\chi_{\text{red}}^{2} = 1.82\), \(\text{AIC} = 114583.56\), \(\text{BIC} = 114683.14\)} \\
-        \hline
-        \textbf{Functions} & \textbf{Parameters} & \textbf{Results} & \textbf{Error} \\
+        \textbf{Functions} & \textbf{Parameters}           & \textbf{Results} & \textbf{Error}                      \\
         \hline
         \multirow{5}{*}{Sérsic}
-        & PA (º) & \(32.08\) & \(0.23\) \\
-        & Ell & \(0.21\) & \(0.0\) \\
-        & \(n\) & \(1.44\) & \(0.01\) \\
-        & \(I_{e}\) (counts/\(px^{2}\)) & \(795.28\) & \(4.1\) \\
-        & \(R_{e}\) (px) & \(5.96\) & \(0.02\) \\
+                           & PA (º)                        & \(21.94\)        & \(0.28\)                            \\
+                           & Ell                           & \(0.21\)         & \(0.0\)                             \\
+                           & \(n\)                         & \(1.63\)         & \(0.0\)                             \\
+                           & \(I_{e}\) (counts/\(px^{2}\)) & \(700\)          & \(0.0\)                             \\
+                           & \(R_{e}\) (px)                & \(6.12\)         & \(0.01\)                            \\
         \hline
         \multirow{4}{*}{Exponential}
-        & PA (º) & \(29.43\) & \(0.06\) \\
-        & Ell & \(0.64\) & \(0.0\) \\
-        & \(I_{0}\) (counts/\(px^{2}\)) & \(300.06\) & \(1.64\) \\
-        & \(h\) (px) & \(29.76\) & \(0.1\) \\
+                           & PA (º)                        & \(29.36\)        & \(0.06\)                            \\
+                           & Ell                           & \(0.66\)         & \(0.0\)                             \\
+                           & \(I_{0}\) (counts/\(px^{2}\)) & \(289.28\)       & \(1.41\)                            \\
+                           & \(h\) (px)                    & \(30.98\)        & \(0.1\)                             \\
+        \hline
+        \multirow{5}{*}{Sérsic (Lump)}
+                           & \(X_{1}\)                     & \(117.13\)       & \(0.02\)                            \\
+                           & \(Y_{1}\)                     & \(145.22\)       & \(0.02\)                            \\
+                           & PA (º)                        & \(68.32\)        & \(1.39\)                            \\
+                           & Ell                           & \(0.25\)         & \(0.01\)                            \\
+                           & \(n\)                         & \(1.53\)         & \(0.04\)                            \\
+                           & \(I_{e}\) (counts/\(px^{2}\)) & \(166.4\)        & \(5.27\)                            \\
+                           & \(R_{e}\) (px)                & \(4.2\)          & \(0.09\)                            \\
         \hline
     \end{tabular}
-    \caption{Parameters for the Exponential + Sérsic Model with customized mask}
-\end{table}
-
-\begin{table}[!htb]
-    \renewcommand{\thetable}{S4}
-    \centering
-    \begin{tabular}{|c|l|c|c|}
-        \hline
-        \multicolumn{4}{|c|}{\textbf{Exponential + Sérsic}} \\
-      
-        \multicolumn{4}{|c|}{\textbf{with ad hoc customised mask}} \\
-        \hline
-        \textbf{Component} & \textbf{m} & \textbf{M} & \textbf{B/T} \\
-        \hline
-        Bulb & \(9.8585\) & \(-25.45\) & \(0.34251\) \\
-        \hline
-        Disk & \(9.1505\) & \(-26.16\) & \(0.65749\) \\
-        \hline
-    \end{tabular}
-    \caption{Magnitudes and Bulge Disk Ratios for the Exponential + Sérsic model with customised mask. }
+    \caption{Parameters for the Exponential + Sérsic \& Sérsic (Lump) Model}
+    \label{tab:my_label}
 \end{table}
 
 
