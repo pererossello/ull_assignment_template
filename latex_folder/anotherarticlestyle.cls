@@ -27,7 +27,7 @@
 \RequirePackage{cite}
 \RequirePackage{titlesec}
 \RequirePackage{ifthen}
-\RequirePackage[a4paper, left=1.7cm, right=1.7cm, top=2.2cm, bottom=2.2cm]{geometry}
+\RequirePackage[a4paper, left=1.7cm, right=1.7cm, top=2.3cm, bottom=2.3cm]{geometry}
 \RequirePackage{scalefnt}
 \RequirePackage{type1cm}
 \RequirePackage{fancyhdr}
@@ -147,15 +147,21 @@
   \fi
 }
 
-\renewcommand{\section}{\@startsection {section}{1}{-0.2in}%
-  {12pt}{2pt}%
-  {\ifnum\value{section}>0
-      \sffamily\bfseries\scalefont{1.3}\textcolor{ullpurple}%
-    \else
-      \sffamily\bfseries\scalefont{1.3}%
-    \fi
-  }%
-}
+\titleformat{\section}
+{\sffamily\bfseries\scalefont{1.3}\color{ullpurple}}
+{\thesection}
+{0.5em}
+{}
+% \renewcommand{\section}{\@startsection {section}{1}{-0.2in}%
+%   {12pt}{2pt}%
+%   % {\ifnum\value{section}>0%
+%   %     \sffamily\bfseries\scalefont{1.3}\textcolor{ullpurple}%
+%   %   \else
+%   %     \sffamily\bfseries\scalefont{1.3}%
+%   %   \fi
+%   % }%
+% }
+
 \makeatother
 
 

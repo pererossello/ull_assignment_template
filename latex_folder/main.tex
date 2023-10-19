@@ -9,6 +9,11 @@
 \leftheader{Subject Report Belongs To}
 \rightheader{Master degree ni Astrophysics}
 
+\setlength{\headheight}{13.6pt}
+\addtolength{\topmargin}{-1.6pt}
+
+
+
 
 
 \begin{document}
@@ -21,7 +26,41 @@
     \end{abstract}
 \end{strip}
 
-% \section{Introduction}
+\section{Introduction}
+\input{sections/intro}
+
+\section{Methodology}
+\input{sections/methods}
+
+\section{Results}
+\input{sections/results}
+
+\section{Conclusions}
+\input{sections/conclusions}
+
+\newpage
+\pagebreak
+
+\section*{References}
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+
+
+% Comment if you don't want Supplementary Tables or Figures
+
+\onecolumn
+\newpage
+\pagebreak
+\section*{Supplementary Tables}
+\input{sections/supplementary_tabs}
+
+\twocolumn
+\onecolumn
+\newpage
+\pagebreak
+\section*{Supplementary Figures}
+\input{sections/supplementary}
 
 
 
@@ -29,7 +68,7 @@
 
 
 
-% \input{sections/intro}
+% 
 
 % \section{Methodology}
 
@@ -42,12 +81,8 @@
 % \input{sections/conclusions}
 
 
-% \newpage
-% \pagebreak
-% \section*{References}
 
-% \bibliographystyle{plainnat}
-% \bibliography{refs}
+
 
 % \onecolumn
 % \newpage
