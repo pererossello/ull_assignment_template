@@ -1,0 +1,106 @@
+
+\vspace{0.1in}
+{\noindent\large\textcolor{ullpurple}{\textit{2.1 Image file analysis}}}
+\vspace{0.1in}
+
+A \texttt{fits} file containing photometric data of the galaxy UGC09629 with a pixel-length resolution $R_{\text{px}} = 0.396$ arcsec/px was supplied for our analysis. The initial measurements were in Analog Digital Units (ADUs), which we converted to detector electron counts--or 'counts' for short--by multiplying them by the given CCD-dependent gain of $g=6.565$ counts/ADU. It's crucial to note that an average sky value of 221.61 ADUs had already been subtracted from the initial image; an adjustment that has to be accounted for in subsequent analyses. Additionally, the readout noise specified for the dataset was 5.76 counts. A calibration constant, $Z_\text{cal}=-23.60$, was also provided for the conversion from surface brightness to magnitudes. We recall that surface brightness is measured in this context in counts/arcsec$^2$ and that its expression in magnitudes is 
+\begin{equation}
+    \mu_{r}=-2,5\log_{10}(I[\text{counts}/\text{arcsec}^2]) +Z_{cal}^\prime \ ,
+\end{equation}
+where $Z_{\text{cal}}^\prime = \lvert Z_\text{cal} \rvert + 5log_{10}(R_{\text{px}})$ is the new magnitude calibration constant for surface brightness.\footnote{That is, $Z_{cal}^\prime$ is the calibration constant for the magnitude derived from the flux in counts/arcsec$^2$, as opposed to the calibration constant $Z_\text{cal}$ for the magnitude derived from a flux in counts/pixel} All results below will be provided in surface brightness magnitudes. It is important to mention that the original \texttt{fits} file contains negative values due to sky subtraction, which could pose issues when converting to the magnitude scale. To address this, we have shifted the original data so that the most negative value becomes zero, ensuring that every pixel now has a positive-definite flux value. This adjustment has a negligible impact on the subsequent analysis, as the flux within the galaxy far exceeds the small offset value.
+
+Additionally, we simulate the convolution of an ideal 'true' image with a point-spread function (PSF) to account for atmospheric and telescope-induced distortions. We use a Moffat function to model the PSF, a common approach for its ability to capture the wing-like structure in the star profiles. For our PSF, we set parameters with a FWHM of 1.25136 arcsec and a Beta of 3.59, generating a 51x51 pixel image in FITS format to ensure sufficient sampling. Imfit efficiently handles the PSF normalization and convolution process \citep{erwin2015imfit}.
+
+\vspace{0.1in}
+{\noindent\large\textcolor{ullpurple}{\textit{2.2 Fitting 2D models}}}
+\vspace{0.1in}
+
+
+Analysis of surface brightness data, as shown in Figure 1, reveals distinct structural components: mainly, a central bulge and an encompassing disk. Additionally, when examining the galaxy in magnitude scale, a localized luminosity peak near the galaxy's center is apparent. We hypothetise that this feature could potentially be another galaxy merging with UGC09629 or a foreground star along our line of sight. This lump will be relevant in the selection of 2D photometric models used in subsequent analyses.
+
+To model these observations, we adhere to common practice by employing a S\'{e}rsic profile for the bulge and an exponential function for the disk. An additional S\'{e}rsic profile will be considered in one model for the localized luminosity peak. The S\'{e}rsic profile can be expressed as 
+\begin{equation}
+    I(R)=I_{e}\exp\left(-b_{n}\left[\left(\frac{R}{R_{e}}\right)^{1/n}-1\right]\right) \ ,
+    \label{eq:sers}
+\end{equation}
+where \( I_{e} \) is the effective surface brightness, \( R_{e} \) the effective radius, \( n \) the S\'{e}rsic index, and \( b_{n} \) a normalization constant to ensure that \( R_{e} \) encloses half of the light within the bulge. On the other hand, the exponential profile for the disk is given by 
+\begin{equation}
+    I(R)=I_{0}\exp\left(-\frac{R}{h}\right) \ ,
+    \label{eq:exp}
+\end{equation}
+where \( I_{0} \) is the central intensity and \( h \) is the disk scale length. Though Eqns. (\ref{eq:sers},\ref{eq:exp}) describe one-dimensional profiles, it's crucial to note that these equations define elliptical isophotes when ellipticity and angle are specified in our 2D model.
+
+% It is suggested to use an exponential function to model the disk and a Sérsic for the bulb, we can also use another Sérsic for the lump. 
+% \begin{enumerate}
+%     \item Sérsic profile: Empirically derived by \citet{sersic1963influence}: \begin{equation}
+%         I(R)=I_{e}\exp(-b_{n}[(\frac{R}{R_{e}})^{\frac{1}{n}})-1])
+%     \end{equation} 
+%     Where \(I_{e}\) is the effective surface brightness, \(R_{e}\) the effective radius and n the Sérsic index, and \(b_{n}\) the function to assure \(R_{e}\) contains half of the light. 
+%     \\ In magnitudes:
+%     \begin{equation}
+%         \mu (R)=\mu_{e}+\frac{2.5b_{n}}{ln(10)}((R/R_{e})^{1/n}-1)
+%     \end{equation}
+%     \item Exponential profile: Proposed by \citet{freeman1970disks} to describe stellar discs:
+%     \begin{equation}
+%         I(R)=I_{0}exp(-r/h)
+%     \end{equation}
+%     In magnitudes:
+%     \begin{equation}
+%         \mu (R)=\mu_{0}+\frac{2,5}{ln(10)}\frac{R}{h}
+%     \end{equation}
+%     Where \(I_{0}\) is the central intensity and \(h\) is the disc scale length. 
+% \end{enumerate}
+
+
+% Actually, in this work we develop 3 different models. First, we incorporate both an exponential and a Sérsic model, supplemented with elliptical isophote profile analysis. The second model consists of a Sérsic and a exponential model for the bulb and another Sérsic model for the lump. The last one is also a exponential and a Sérsic model for our galaxy but we use a customized ad hoc mask. Among these models we will explain which one is better.
+
+
+Accompanying the galaxy image, a mask was also provided to exclude specific regions from the fitting procedure (see Panel a) in Figure \ref{fig:3}). The mask primarily targets the outermost regions of the image and bright points corresponding to stars, effectively omitting them from the fit. Notably, the mask does not obscure the localized luminosity peak near the galaxy's center.
+
+Considering our preliminary visual inspection of our galaxy and the provided mask, we developed three distinct models to capture the structural features of UGC09629. 
+\begin{itemize}
+    \item \textit{Sérsic$+$Exponential}. We combine an exponential function for the disk and a S\'{e}rsic profile for the bulge. We use the original provided mask for the fitting process. 
+    \item \textit{Sérsic$+$Exponential \& Sérsic (lump)}. We use a S\'{e}rsic profile for both the bulge and the localized luminosity peak near the galaxy's center, in addition to an exponential model for the disk. Original mask is used.
+    \item \textit{Sérsic$+$Exponential with new mask}. We combine an exponential function for the disk and a S\'{e}rsic profile for the bulge. We use an alternative customized ``\textit{ad hoc}'' mask to refine the fit.
+\end{itemize}
+% Subsequent sections will detail the comparative efficacy of these models in capturing the photometric properties of the galaxy.
+
+% Once the functions are decided we use Imfit \citep{erwin2015imfit} to find the best fit. Imfit allows for the specification of a composite 2D surface-brightness model. These models are then fitted to the observed data through nonlinear minimization techniques to achieve optimal fitting statistics.
+
+Once the models to be fitted are determined  we use Imfit's non-linear minimization techniques to optimize model parameters. We opt for the Levenberg--Marquardt (L-M) gradient-search algorithm for its robust performance \citep{levenberg1944method, marquardt1963algorithm}. The primary objective of this optimization
+is to minimize the Gaussian-based \(\chi^2\) statistic, defined as:
+
+\[
+\chi^2 = \sum_{i=0}^{N} \frac{z_i}{\sigma^2_i} \left(I_{d,i} - I_{m,i}\right)^2
+\]
+
+Here, \(I_{d,i}\) represents the observed data pixels, \(I_{m,i}\) the model data pixels. \(\sigma_i^2\) is the Gaussian error of the data pixel, and $z_i$ is a boolean factor accounting for the provided mask. This \(\chi^2\) statistic serves as our main metric for quantifying and comparing the quality of the fit across different models.
+
+In addition to the $\chi^2$ statistic, we also use the Akaike Information Criterion (AIC) \citep{akaike1998information} and the Bayesian Information Criterion (BIC) \citep{schwarz1978estimating} for quantifying the quality of the fit. Both metrics incorporate a penalty term for the number of parameters in the model and aim to be minimized, helping to prevent overfitting.
+
+Regarding the customized mask. To construct it, we began with the residual image generated from subtracting our Sersic+Exponential model fit from the observed galaxy image. This residual image highlights the disparities between the model and actual data. We selected pixel values that were in the top 1 percentile of brightness on the magnitude scale. These outliers usually correspond to individual stars or other luminous components that are not part of the galaxy itself, although we understand they could also be due to intrinsic morphological components of the galaxy not accounted by an overly simplistic model. By isolating these points, we created a mask that can be used to exclude these extraneous components from further analysis, thereby refining our model's accuracy.
+
+\vspace{0.1in}
+{\noindent\large\textcolor{ullpurple}{\textit{2.3 Photometric decomposition routines}}}
+\vspace{0.1in}
+
+For galaxy model fitting we leveraged both the native Imfit program and its Python wrapper, pyImfit, which is publicly available on GitHub \url{https://github.com/perwin/pyimfit}.\footnote{Last consulted on 10/02/2023}. We also made extensive use of the Photutils package for isophote profiling, as described in \citep{jedrzejewski1987ccd}. The Python wrapper for Imfit was used for its enhanced modularity, allowing us to create a dedicated repository for our codebase, which can be found at \url{https://github.com/pererossello/galactic_photofit}, and accessible for further detail on our methods and full reproducibility of our results.
+ % We develop 2D images of the model and the residual, also we plot 1D radial profiles of the position angle, the \(\mu_{r}\) magnitude and the ellipticity.
+% We can derive other physical quantities: the apparent magnitude and the relation \(B/T=\frac{L_{bulb}}{L_total}\) and \(D/T=\frac{L_{disk}}{L_{total}}\). Imfit will automatically provide these quantities using the command \textit{makeimage bestfit\_parameters\_imfit.dat --save-fluxes fluxes.dat --zero-point=23.597900 --nrows=231 --ncols=276.} \\
+% After successfully finding the best fit, Imfit will give back a model in FITS format and the parameters of the functions with the best fitting. The model in FITS format has the superficial brightness in \(counts/pixel^{2}\) and the distance in pixels, to make the necessary conversions we use the fact that 1 pixel is equivalent to 0,396 arcsec. \\ 
+% To obtain the distance \(R\) in \(kpc\) we know that 
+% \begin{equation}
+%     R(kpc)=D(kpc)tan(\frac{0,369r [px]}{3600 [arcsec]})
+% \end{equation}
+% Where \(D\) the distance of the galaxy. We can compute \(D\) using the Hubble Law \(D=\frac{zc}{H_{0}}\) where \(z\) is the redshift and \(H_{0}\) the Hubble constant. We already know that \(D=115.3 Mpc\). 
+% To convert our intensity from the model [counts/\(pixel^{2}\)] we have to multiply by the gain, because our model is in ADU, and the scale from \(pixels^{2}\) to \(arcsec^{2}\). Then, we can estimate the superficial brightness \(\mu _{r} (mag/arcsec^{2})\) using the relation:
+% \begin{equation}
+%     \mu_{r}=-2,5log_{10}(I(R)) +Z_{cal}+5log_{10}(0,396)
+% \end{equation}
+% Where \(Z_{cal}\) is the calibration magnitude in absolute value. \\
+% Remember that with \textit{makeimage} we estimate the apparent magnitude and the \(B/T\), \(R/T\) ratios. Therefore, we can get the absolute magnitude:
+% \begin{equation}
+%     M=m-5log_{10}(\frac{d [pc]}{10})
+% \end{equation}
+% The image of the galaxy UGC 09629 was captured using the 'i' band, which is a specific photometric band in the near-infrared part of the electromagnetic spectrum. In the Sloan Digital Sky Survey (SDSS), the 'i' band centers roughly around 7671 Ångströms. This observation was carried out on May 9, 2002, at the SDSS's dedicated 2.5m telescope located at Apache Point Observatory in Southern New Mexico. The exposure time for the image was approximately 53.9 seconds. ¿En la parte de la introducción?
+% We also used the Python wrapper for Imfit, which is publicly available at the following GitHub repository: \url{https://github.com/perwin/pyimfit}.\footnote{Last consulted on 10/02/2023}. In our python code we use the isophote fitting method used in photutils package: \citep{jedrzejewski1987ccd}.\\
