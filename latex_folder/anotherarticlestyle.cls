@@ -152,6 +152,12 @@
 {\thesection}
 {0.5em}
 {}
+
+\titleformat{\subsection}
+{\sffamily\bfseries\scalefont{1}\color{ullpurple}}
+{\thesubsection}
+{0.5em}
+{}
 % \renewcommand{\section}{\@startsection {section}{1}{-0.2in}%
 %   {12pt}{2pt}%
 %   % {\ifnum\value{section}>0%
